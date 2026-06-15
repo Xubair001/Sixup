@@ -159,7 +159,7 @@ cp backend/.env.example backend/.env
 
 # Frontend
 cp frontend/.env.local.example frontend/.env.local
-# Defaults point to localhost:8001 — no changes needed for local dev
+# Defaults point to localhost:8000 — no changes needed for local dev
 ```
 
 Generate a strong JWT secret:
@@ -188,8 +188,8 @@ chmod +x start.sh && ./start.sh
 
 | Service | URL |
 |---|---|
-| API | http://localhost:8001 |
-| API docs (Swagger) | http://localhost:8001/docs |
+| API | http://localhost:8000 |
+| API docs (Swagger) | http://localhost:8000/docs |
 | Frontend | http://localhost:3000 |
 
 ---
@@ -202,7 +202,7 @@ chmod +x start.sh && ./start.sh
 |---|---|---|
 | `DATABASE_URL` | asyncpg URL for the app | — |
 | `POSTGRES` | plain psycopg2 URL for Alembic | — |
-| `APP_PORT` | API server port | `8001` |
+| `APP_PORT` | API server port | `8000` |
 | `REDIS_URL` | Redis connection string | `redis://localhost:6379` |
 | `JWT_SECRET` | Secret for signing tokens — **change this** | — |
 | `JWT_ALGORITHM` | Signing algorithm | `HS256` |
@@ -218,8 +218,8 @@ chmod +x start.sh && ./start.sh
 
 | Variable | Description | Default |
 |---|---|---|
-| `NEXT_PUBLIC_API_URL` | Backend API base URL | `http://localhost:8001` |
-| `NEXT_PUBLIC_WS_URL` | WebSocket base URL | `ws://localhost:8001` |
+| `NEXT_PUBLIC_API_URL` | Backend API base URL | `http://localhost:8000` |
+| `NEXT_PUBLIC_WS_URL` | WebSocket base URL | `ws://localhost:8000` |
 
 ---
 
@@ -270,7 +270,7 @@ The WebSocket manager is a singleton injected via FastAPI `Depends`. Scoring eve
 ```bash
 # Backend (from repo root)
 source backend/.venv/bin/activate
-uvicorn app.main:app --reload --port 8001 --app-dir backend
+uvicorn app.main:app --reload --port 8000 --app-dir backend
 
 # Frontend
 cd frontend && npm run dev
