@@ -34,7 +34,7 @@ export function Sidebar() {
           <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
             <Zap size={14} className="text-white" />
           </div>
-          <span className="text-base font-bold gradient-text">Cricket Pocket</span>
+          <span className="text-base font-bold gradient-text">Sixup</span>
         </div>
       </div>
 

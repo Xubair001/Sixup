@@ -3,8 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Cricket Pocket",
-  description: "Indoor cricket team management and live scoring platform",
+  title: "Sixup",
+  description: "Score it. Track it. Own it. — The all-in-one indoor cricket platform.",
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.svg",

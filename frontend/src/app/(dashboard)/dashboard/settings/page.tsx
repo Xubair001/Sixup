@@ -10,7 +10,7 @@ export default function SettingsPage() {
     <div className="max-w-lg mx-auto space-y-6 animate-fade-in">
       <div>
         <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Settings</h1>
-        <p className="text-sm text-slate-500 mt-0.5">Customize your Cricket Pocket experience</p>
+        <p className="text-sm text-slate-500 mt-0.5">Customize your Sixup experience</p>
       </div>
 
       <div className="rounded-2xl bg-white border border-slate-200 dark:bg-white/[0.04] dark:border-white/10 overflow-hidden">
