@@ -106,15 +106,15 @@ function AvailabilitySection({ matchId }: { matchId: number }) {
       </div>
       <div className="grid grid-cols-3 gap-2">
         {[
-          { status: "available", icon: CheckCircle, label: "I'm in", active: "border-emerald-500/50 bg-emerald-500/15 text-emerald-300", inactive: "border-white/10 bg-white/5 text-slate-400" },
-          { status: "maybe",     icon: HelpCircle,  label: "Maybe",  active: "border-yellow-500/50  bg-yellow-500/15  text-yellow-300",  inactive: "border-white/10 bg-white/5 text-slate-400" },
-          { status: "unavailable", icon: Circle,    label: "Can't",  active: "border-red-500/50     bg-red-500/15     text-red-300",     inactive: "border-white/10 bg-white/5 text-slate-400" },
+          { status: "available", icon: CheckCircle, label: "I'm in", active: "border-emerald-500/50 bg-emerald-500/15 text-emerald-300", inactive: "border-slate-200 bg-slate-50 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400" },
+          { status: "maybe",     icon: HelpCircle,  label: "Maybe",  active: "border-yellow-500/50  bg-yellow-500/15  text-yellow-300",  inactive: "border-slate-200 bg-slate-50 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400" },
+          { status: "unavailable", icon: Circle,    label: "Can't",  active: "border-red-500/50     bg-red-500/15     text-red-300",     inactive: "border-slate-200 bg-slate-50 text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400" },
         ].map(({ status, icon: Icon, label, active, inactive }) => (
           <button
             key={status}
             onClick={() => respond(status)}
             disabled={!!responding}
-            className={`flex flex-col items-center gap-1 py-3 rounded-2xl border text-xs font-semibold transition-all active:scale-95 ${inactive} hover:bg-white/10`}
+            className={`flex flex-col items-center gap-1 py-3 rounded-2xl border text-xs font-semibold transition-all active:scale-95 ${inactive} hover:bg-slate-100 dark:hover:bg-white/10`}
           >
             {responding === status ? <Spinner className="w-4 h-4" /> : <Icon size={16} />}
             {label}
@@ -263,7 +263,7 @@ function ScorerPanel({ matchId, isScorer }: { matchId: number; isScorer: boolean
           <Zap size={28} className="text-indigo-400" />
         </div>
         <div>
-          <p className="text-slate-200 font-semibold">You created this match</p>
+          <p className="text-slate-800 dark:text-slate-200 font-semibold">You created this match</p>
           <p className="text-slate-500 text-xs mt-0.5">Tap below when teams are ready</p>
         </div>
         <Button onClick={startMatch} className="px-10 h-12 text-base">
@@ -290,7 +290,7 @@ function ScorerPanel({ matchId, isScorer }: { matchId: number; isScorer: boolean
           <p className="text-sm text-slate-400 mt-1">{activeInnings.total_wickets} wkts</p>
         </div>
       )}
-      <div className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10">
+      <div className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 dark:bg-white/5 dark:border-white/10">
         <Lock size={13} className="text-slate-500 shrink-0" />
         <p className="text-xs text-slate-500">Scoring managed by the match creator</p>
       </div>
@@ -323,7 +323,7 @@ function ScorerPanel({ matchId, isScorer }: { matchId: number; isScorer: boolean
                 className={`flex-1 py-2 text-xs rounded-xl font-medium transition-all ${
                   activeInnings?.innings_id === i.innings_id
                     ? "bg-indigo-500 text-white shadow-lg shadow-indigo-500/25"
-                    : "bg-white/5 text-slate-400 hover:bg-white/10"
+                    : "bg-slate-100 text-slate-500 hover:bg-slate-200 dark:bg-white/5 dark:text-slate-400 dark:hover:bg-white/10"
                 }`}
               >
                 {i.batting_team_id === homeTeamId ? "Home" : "Away"}: {i.total_runs}/{i.total_wickets}
@@ -332,7 +332,7 @@ function ScorerPanel({ matchId, isScorer }: { matchId: number; isScorer: boolean
             {innings.length < 2 && (
               <button
                 onClick={() => createInnings(innings[0].batting_team_id === homeTeamId ? awayTeamId! : homeTeamId!)}
-                className="px-3 py-2 text-xs rounded-xl bg-white/5 text-slate-400 border border-white/10 hover:bg-white/10"
+                className="px-3 py-2 text-xs rounded-xl bg-slate-100 text-slate-500 border border-slate-200 hover:bg-slate-200 dark:bg-white/5 dark:text-slate-400 dark:border-white/10 dark:hover:bg-white/10"
               >
                 + 2nd
               </button>
@@ -380,7 +380,7 @@ function ScorerPanel({ matchId, isScorer }: { matchId: number; isScorer: boolean
                 className={`py-3.5 rounded-2xl text-base font-black transition-all active:scale-90 ${
                   physical === n && !isWide
                     ? "bg-indigo-500 text-white shadow-lg shadow-indigo-500/30 scale-105"
-                    : "bg-white/5 text-slate-300 hover:bg-white/10"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10"
                 }`}
               >
                 {n}
@@ -400,7 +400,7 @@ function ScorerPanel({ matchId, isScorer }: { matchId: number; isScorer: boolean
               key={key}
               onClick={toggle}
               className={`py-3.5 rounded-2xl border text-center transition-all active:scale-95 ${
-                active ? activeCls : "bg-white/5 border-white/10 text-slate-400 hover:bg-white/10"
+                active ? activeCls : "bg-slate-100 border-slate-200 text-slate-500 hover:bg-slate-200 dark:bg-white/5 dark:border-white/10 dark:text-slate-400 dark:hover:bg-white/10"
               }`}
             >
               <p className="text-sm font-bold">{label}</p>
@@ -410,7 +410,7 @@ function ScorerPanel({ matchId, isScorer }: { matchId: number; isScorer: boolean
         </div>
 
         {/* Preview */}
-        <div className="flex items-center justify-between px-4 py-2 rounded-2xl bg-white/[0.03] border border-white/8">
+        <div className="flex items-center justify-between px-4 py-2 rounded-2xl bg-slate-50 border border-slate-100 dark:bg-white/[0.03] dark:border-white/8">
           <p className="text-xs text-slate-500">This ball will score</p>
           <p className={`text-sm font-black ${previewTotal < 0 ? "text-red-400" : previewTotal === 0 ? "text-slate-400" : "text-indigo-300"}`}>
             {previewTotal >= 0 ? "+" : ""}{previewTotal} runs
@@ -437,13 +437,13 @@ function ScorerPanel({ matchId, isScorer }: { matchId: number; isScorer: boolean
                 const desc = b.is_wide ? "Wide" : b.is_no_ball ? "No Ball" : b.is_wicket ? "Wicket" : `${b.physical_runs} runs`;
                 const zone = b.net_zone !== "none" ? ` + ${b.net_zone.replace("_", " ")}` : "";
                 return (
-                  <div key={b.id} className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/[0.03] border border-white/8">
+                  <div key={b.id} className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-50 border border-slate-100 dark:bg-white/[0.03] dark:border-white/8">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-mono text-slate-500">{b.over_number}.{b.ball_number}</span>
-                      <span className="text-xs text-slate-400">{desc}{zone}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400">{desc}{zone}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className={`text-xs font-bold ${b.total_runs < 0 ? "text-red-400" : "text-slate-200"}`}>
+                      <span className={`text-xs font-bold ${b.total_runs < 0 ? "text-red-400" : "text-slate-800 dark:text-slate-200"}`}>
                         {b.total_runs >= 0 ? "+" : ""}{b.total_runs}
                       </span>
                       <button
@@ -537,7 +537,7 @@ export default function MatchDetailPage() {
     <div className="max-w-lg mx-auto space-y-4 pb-10 animate-fade-in">
       {/* Back */}
       <button onClick={() => router.back()}
-        className="flex items-center gap-2 text-slate-500 hover:text-slate-300 text-sm transition-colors group">
+        className="flex items-center gap-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 text-sm transition-colors group">
         <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform" />
         Back
       </button>
@@ -609,7 +609,7 @@ export default function MatchDetailPage() {
               <div className="w-8 h-8 rounded-xl bg-indigo-500/15 flex items-center justify-center">
                 <Target size={14} className="text-indigo-400" />
               </div>
-              <h3 className="font-semibold text-slate-100">Scoring</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-slate-100">Scoring</h3>
             </div>
             {isScorer && match.status === "live" && (
               <span className="text-xs text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-full font-medium">
@@ -627,7 +627,7 @@ export default function MatchDetailPage() {
           <div className="w-8 h-8 rounded-xl bg-cyan-500/15 flex items-center justify-center">
             <Users size={14} className="text-cyan-400" />
           </div>
-          <h3 className="font-semibold text-slate-100">Availability</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-slate-100">Availability</h3>
         </div>
         <AvailabilitySection matchId={matchId} />
       </div>
@@ -639,20 +639,20 @@ export default function MatchDetailPage() {
             <div className="w-8 h-8 rounded-xl bg-amber-500/15 flex items-center justify-center">
               <Award size={14} className="text-amber-400" />
             </div>
-            <h3 className="font-semibold text-slate-100">Match Awards</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100">Match Awards</h3>
           </div>
           <div className="grid grid-cols-2 gap-3">
             {stats.best_batsman && (
               <div className="rounded-2xl p-3 bg-gradient-to-br from-indigo-500/10 to-blue-500/10 border border-indigo-500/20">
                 <p className="text-xs text-slate-500 mb-1">🏏 Best Batsman</p>
-                <p className="text-sm font-bold text-slate-200">{getBestName(stats.best_batsman.user_id)}</p>
+                <p className="text-sm font-bold text-slate-800 dark:text-slate-200">{getBestName(stats.best_batsman.user_id)}</p>
                 <p className="text-lg font-black gradient-text">{stats.best_batsman.runs} <span className="text-xs font-normal text-slate-500">runs</span></p>
               </div>
             )}
             {stats.best_bowler && (
               <div className="rounded-2xl p-3 bg-gradient-to-br from-purple-500/10 to-violet-500/10 border border-purple-500/20">
                 <p className="text-xs text-slate-500 mb-1">⚡ Best Bowler</p>
-                <p className="text-sm font-bold text-slate-200">{getBestName(stats.best_bowler.user_id)}</p>
+                <p className="text-sm font-bold text-slate-800 dark:text-slate-200">{getBestName(stats.best_bowler.user_id)}</p>
                 <p className="text-lg font-black gradient-text">{stats.best_bowler.wickets} <span className="text-xs font-normal text-slate-500">wkts</span></p>
               </div>
             )}
@@ -668,7 +668,7 @@ export default function MatchDetailPage() {
               <div className="w-8 h-8 rounded-xl bg-yellow-500/15 flex items-center justify-center">
                 <Star size={14} className="text-yellow-400" />
               </div>
-              <h3 className="font-semibold text-slate-100">Merit Points</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-slate-100">Merit Points</h3>
             </div>
             <Button size="sm" variant="ghost" onClick={() => setMeritOpen(true)}>Award</Button>
           </div>
@@ -682,7 +682,7 @@ export default function MatchDetailPage() {
             <div className="w-8 h-8 rounded-xl bg-purple-500/15 flex items-center justify-center">
               <TrendingUp size={14} className="text-purple-400" />
             </div>
-            <h3 className="font-semibold text-slate-100">Scorecard</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100">Scorecard</h3>
           </div>
           <div className="space-y-5">
             {stats.innings.map((inning) => {
@@ -697,14 +697,14 @@ export default function MatchDetailPage() {
                   </div>
                   <div className="space-y-1">
                     {inning.batting.map((b, idx) => (
-                      <div key={b.user_id} className={`flex justify-between px-2 py-1.5 rounded-xl text-xs ${idx % 2 === 0 ? "bg-white/[0.02]" : ""}`}>
-                        <span className="text-slate-400">{getName(b.user_id)}</span>
-                        <span className="text-slate-200 font-bold">{b.runs} <span className="text-slate-500 font-normal">({b.balls}b)</span></span>
+                      <div key={b.user_id} className={`flex justify-between px-2 py-1.5 rounded-xl text-xs ${idx % 2 === 0 ? "bg-slate-50 dark:bg-white/[0.02]" : ""}`}>
+                        <span className="text-slate-500 dark:text-slate-400">{getName(b.user_id)}</span>
+                        <span className="text-slate-800 dark:text-slate-200 font-bold">{b.runs} <span className="text-slate-500 font-normal">({b.balls}b)</span></span>
                       </div>
                     ))}
                   </div>
                   {inning.bowling.length > 0 && (
-                    <div className="mt-2 pt-2 border-t border-white/5">
+                    <div className="mt-2 pt-2 border-t border-slate-100 dark:border-white/5">
                       <p className="text-xs text-slate-600 mb-1">Bowling</p>
                       {inning.bowling.map((b) => {
                         const bowlTeamMembers = inning.batting_team_id === match.team_home_id ? awayMembers : homeMembers;
