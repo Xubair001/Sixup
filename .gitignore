@@ -49,6 +49,9 @@ frontend/.npm
 frontend/.eslintcache
 frontend/*.tsbuildinfo
 
+# ── Claude Code internal ─────────────────────────────────────────────────────
+.claude/
+
 # ── IDEs ─────────────────────────────────────────────────────────────────────
 .vscode/
 .idea/
