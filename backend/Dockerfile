@@ -1,17 +1,27 @@
-FROM python:3.12-slim
+# ── Builder stage: has gcc for any packages that need compilation ──────────────
+FROM python:3.12 AS builder
 
 WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=1
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DEFAULT_TIMEOUT=100 \
+    PIP_RETRIES=5
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+# ── Runtime stage: slim, no build tools ────────────────────────────────────────
+FROM python:3.12-slim AS runner
+
+WORKDIR /app
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+# Copy only installed packages from builder
+COPY --from=builder /install /usr/local
 
 COPY . .
 
