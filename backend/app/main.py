@@ -45,7 +45,7 @@ app.add_middleware(
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "https://sixup-production.up.railway.app",
-        "https://*.vercel.app",
+        "https://sixup.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
