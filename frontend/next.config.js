@@ -3,7 +3,8 @@ const nextConfig = {
   output: "standalone",
   images: {
     remotePatterns: [
-      { protocol: "http", hostname: "localhost", port: "8001" },
+      { protocol: "http", hostname: "localhost", port: "8000" },
+      { protocol: "https", hostname: "sixup-production.up.railway.app" },
       { protocol: "https", hostname: "*.amazonaws.com" },
     ],
     dangerouslyAllowSVG: true,

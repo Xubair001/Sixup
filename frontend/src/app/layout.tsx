@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 export const metadata: Metadata = {
   title: "Sixup",
   description: "Score it. Track it. Own it. — The all-in-one indoor cricket platform.",
-  manifest: "/manifest.json",
   icons: {
     icon: "/favicon.svg",
   },
